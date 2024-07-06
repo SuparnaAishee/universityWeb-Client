@@ -1,22 +1,33 @@
-import {  Layout, Menu } from "antd";
+import {  Layout, Menu} from "antd";
 const { Content, Footer, Header,Sider } =Layout;
 
-import {
-  UploadOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
-} from "@ant-design/icons";
-import { createElement } from "react";
-const items = [
-  UserOutlined,
-  VideoCameraOutlined,
-  UploadOutlined,
-  UserOutlined,
-].map((icon, index) => ({
-  key: String(index + 1),
-  icon: createElement(icon),
-  label: `nav ${index + 1}`,
-}));
+
+import {  Outlet } from "react-router-dom";
+import { adminSidebarItems } from "../../routes/admin.routes";
+// const items: MenuProps["items"] = [
+//   {
+//     key: "Dashboard",
+//     label: <NavLink to="/admin/dashboard">Dashboard</NavLink>,
+//   },
+//   {
+//     key: "User Management",
+//     label: "User Management",
+//     children: [
+//       {
+//         key: "11",
+//         label: <NavLink to="/admin/create-admin">Create Admin</NavLink>,
+//       },
+//       {
+//         key: "13",
+//         label: <NavLink to="/admin/create-faculty">Create Faculty</NavLink>,
+//       },
+//       {
+//         key: "21",
+//         label: <NavLink to="/admin/create-student">Create Student</NavLink>,
+//       },
+//     ],
+//   },
+// ];
 
 
 const MainLayout=()=>{
@@ -37,7 +48,7 @@ const MainLayout=()=>{
             theme="dark"
             mode="inline"
             defaultSelectedKeys={["4"]}
-            items={items}
+            items={adminSidebarItems}
           />
         </Sider>
         <Layout>
@@ -50,7 +61,7 @@ const MainLayout=()=>{
                
               }}
             >
-            <h1>The main content</h1>
+            <Outlet/>
             </div>
           </Content>
           <Footer style={{ textAlign: "center" }}>
